@@ -1,0 +1,16 @@
+test\ComparePriceTest.class
+page\CloudPricingCalculatorPage.class
+service\XpathGenerator.class
+test\CommonConditions.class
+util\FormatTestData.class
+page\CloudGoogleHomepage.class
+util\MethodWait.class
+test\CompareFieldsData.class
+util\TestListener.class
+service\TestDataReader.class
+model\Calculator.class
+driver\DriverSingleton.class
+service\CalculatorCreator.class
+page\AbstractPage.class
+page\SearchResultPage.class
+page\EmailGenerationPage.class
