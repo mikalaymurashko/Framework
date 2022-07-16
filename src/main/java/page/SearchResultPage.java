@@ -14,7 +14,7 @@ public class SearchResultPage extends AbstractPage {
     }
 
     public CloudPricingCalculatorPage proceedToCalculatorPage(){
-        waitElementToBeClickable(driver,calculatorLinkLocator).click();
+        waitPresenceOfElementLocated(driver,calculatorLinkLocator).click();
         logger.info("Cloud pricing calculator page was opened successful");
         return new CloudPricingCalculatorPage(driver);
     }
