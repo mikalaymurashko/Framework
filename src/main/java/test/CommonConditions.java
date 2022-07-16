@@ -43,8 +43,8 @@ public class CommonConditions {
         costFromGoogleCloudPricingPage = cloudPricingCalculatorPage.getCostFromCloudPricingPage();
     }
 
-//    @AfterClass(description = "Browser closing", alwaysRun = true)
-//    public void browserClose() {
-//        DriverSingleton.closeDriver();
-//    }
+    @AfterClass(description = "Browser closing", alwaysRun = true)
+    public void browserClose() {
+        DriverSingleton.closeDriver();
+    }
 }

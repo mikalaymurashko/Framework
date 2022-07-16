@@ -23,8 +23,7 @@ public class CloudGoogleHomepage extends AbstractPage {
     }
 
     public SearchResultPage searchElement(String searchQuery) {
-        waitElementToBeClickable(driver, SEARCH_BUTTON_LOCATOR);
-        waitElementToBeClickable(driver, SEARCH_BUTTON_LOCATOR).click();
+        waitPresenceOfElementLocated(driver, SEARCH_BUTTON_LOCATOR).click();
         WebElement searchFrom = waitPresenceOfElementLocated(driver, SEARCH_FORM_LOCATOR);
         searchFrom.sendKeys(searchQuery);
         searchFrom.sendKeys(Keys.ENTER);
