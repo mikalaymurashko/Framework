@@ -11,7 +11,7 @@ public class EmailGenerationPage extends AbstractPage {
 
     private JavascriptExecutor executor = (JavascriptExecutor) driver;
     private static final By FRAME_LOCATOR = By.xpath("//iframe[@id='ifmail']");
-    private static final By GENERATE_RANDOM_EMAIL_BUTTON = By.xpath("//b[contains (text(),'Случайный адрес электронной почты')]");
+    private static final By GENERATE_RANDOM_EMAIL_BUTTON = By.xpath("//a[@href='email-generator']//b");
     private static final By RANDOM_EMAIL = By.xpath("//div[@id='egen']");
     private static final By OPEN_EMAIL_GENERATED = By.xpath("//button[@onclick='egengo();']");
     private static final By REFRESH_EMAIL_BOX = By.xpath("//button[@id='refresh']");
