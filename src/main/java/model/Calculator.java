@@ -13,10 +13,11 @@ public class Calculator {
     private String localSSD;
     private String datacenterLocation;
     private String committedUsageTerm;
+    private String totalCost;
 
     public Calculator(String numberOfInstances, String operatingSystem, String provisionalType, String machineClass,
                       String machineType, String gpuType, String numberOfGPUs, String localSSD,
-                      String datacenterLocation, String committedUsageTerm) {
+                      String datacenterLocation, String committedUsageTerm, String totalCost) {
         this.numberOfInstances = numberOfInstances;
         this.operatingSystem = operatingSystem;
         this.provisionalType = provisionalType;
@@ -27,6 +28,7 @@ public class Calculator {
         this.localSSD = localSSD;
         this.datacenterLocation = datacenterLocation;
         this.committedUsageTerm = committedUsageTerm;
+        this.totalCost = totalCost;
     }
 
     public String getNumberOfInstances() {
@@ -109,6 +111,14 @@ public class Calculator {
         this.committedUsageTerm = committedUsageTerm;
     }
 
+    public String getTotalCost() {
+        return totalCost;
+    }
+
+    public void setTotalCost(String totalCost) {
+        this.totalCost = totalCost;
+    }
+
     @Override
     public boolean equals(Object o) {
         if (this == o) return true;
@@ -123,13 +133,14 @@ public class Calculator {
                 && numberOfGPUs.equals(that.numberOfGPUs)
                 && localSSD.equals(that.localSSD)
                 && datacenterLocation.equals(that.datacenterLocation)
-                && committedUsageTerm.equals(that.committedUsageTerm);
+                && committedUsageTerm.equals(that.committedUsageTerm)
+                && totalCost.equals(that.totalCost);
     }
 
     @Override
     public int hashCode() {
         return Objects.hash(numberOfInstances, operatingSystem, provisionalType, machineClass, machineType,
-                gpuType, numberOfGPUs, localSSD, datacenterLocation, committedUsageTerm);
+                gpuType, numberOfGPUs, localSSD, datacenterLocation, committedUsageTerm, totalCost);
     }
 
     @Override
@@ -145,6 +156,7 @@ public class Calculator {
                 ", localSSD='" + localSSD + '\'' +
                 ", datacenterLocation='" + datacenterLocation + '\'' +
                 ", committedUsageTerm='" + committedUsageTerm + '\'' +
+                ", totalCost='" + totalCost + '\'' +
                 '}';
     }
 }

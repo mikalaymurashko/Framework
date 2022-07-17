@@ -23,4 +23,7 @@ public class FormatTestData {
         return "Local SSD: " + calculator.getLocalSSD() +
                 " GiB\nCommitted Use Discount applied";
     }
+    public static String getTotalCostString(){
+        return "Total Estimated Cost: "+calculator.getTotalCost()+" per 1 month";
+    }
 }

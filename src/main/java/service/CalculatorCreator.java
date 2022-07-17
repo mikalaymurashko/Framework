@@ -13,6 +13,7 @@ public class CalculatorCreator {
     public static final String LOCAL_SSD = "testData.valueOfLocalSSD";
     public static final String DATACENTER_LOCATION = "testData.valueOfDatacenterLocation";
     public static final String COMMITTED_USAGE = "testData.valueOfCommittedUsage";
+    public static final String TOTAL_COST = "testData.valueOfTotalCost";
 
     public static Calculator withCredentialsFromProperty() {
         return new Calculator(TestDataReader.getTestData(NUMBER_OF_INSTANCES),
@@ -24,6 +25,7 @@ public class CalculatorCreator {
                 TestDataReader.getTestData(NUMBER_OF_GPUS),
                 TestDataReader.getTestData(LOCAL_SSD),
                 TestDataReader.getTestData(DATACENTER_LOCATION),
-                TestDataReader.getTestData(COMMITTED_USAGE));
+                TestDataReader.getTestData(COMMITTED_USAGE),
+                TestDataReader.getTestData(TOTAL_COST));
     }
 }

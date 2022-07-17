@@ -5,9 +5,14 @@ import org.openqa.selenium.By;
 import org.openqa.selenium.JavascriptExecutor;
 import org.openqa.selenium.WebDriver;
 import org.openqa.selenium.WebElement;
+import org.openqa.selenium.support.ui.ExpectedConditions;
+import org.openqa.selenium.support.ui.WebDriverWait;
 import service.CalculatorCreator;
 import service.XpathGenerator;
+
+import java.time.Duration;
 import java.util.ArrayList;
+
 import static util.MethodWait.*;
 
 import static java.lang.String.format;
@@ -46,123 +51,123 @@ public class CloudPricingCalculatorPage extends AbstractPage {
     }
 
     public CloudPricingCalculatorPage switchToComputerEngine() {
-        waitPresenceOfElementLocated(driver,FRAME_LOCATOR);
+        waitPresenceOfElementLocated(driver, FRAME_LOCATOR);
         driver.switchTo().frame(0);
         driver.switchTo().frame("myFrame");
-        waitElementToBeClickable(driver,COMPUTER_ENGINE_BUTTON_LOCATOR).click();
+        waitElementToBeClickable(driver, COMPUTER_ENGINE_BUTTON_LOCATOR).click();
         logger.info("Switching to computer engine was successful");
         return this;
     }
 
     public CloudPricingCalculatorPage inputNumberOfInstancesValue() {
-        waitElementToBeClickable(driver,NUMBER_OF_INSTANCE_INPUT_LOCATOR).sendKeys(calculator.getNumberOfInstances());
-        logger.info(String.format("Number of instances was inputted successful: %s",calculator.getNumberOfInstances()));
+        waitElementToBeClickable(driver, NUMBER_OF_INSTANCE_INPUT_LOCATOR).sendKeys(calculator.getNumberOfInstances());
+        logger.info(String.format("Number of instances was inputted successful: %s", calculator.getNumberOfInstances()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectOSValue() {
-        waitElementToBeClickable(driver,SELECT_OS_LOCATOR).click();
+        waitElementToBeClickable(driver, SELECT_OS_LOCATOR).click();
         By osValueLocator = By.xpath(xpathGenerator.getXpathForOperatingSystemValue());
-        WebElement osValue = waitElementToBeClickable(driver,osValueLocator);
+        WebElement osValue = waitElementToBeClickable(driver, osValueLocator);
         executor.executeScript("arguments[0].click()", osValue);
-        logger.info(String.format("Setting of operating system was successful: %s",calculator.getOperatingSystem()));
+        logger.info(String.format("Setting of operating system was successful: %s", calculator.getOperatingSystem()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectProvisioningValue() {
-        waitElementToBeClickable(driver,PROVISIONING_DROPDOWN_LOCATOR).click();
+        waitElementToBeClickable(driver, PROVISIONING_DROPDOWN_LOCATOR).click();
         By provisionalTypeLocator = By.xpath(format(xpathGenerator.getXpathForProvisioningType()));
-        WebElement provisionalType = waitPresenceOfElementLocated(driver,provisionalTypeLocator);
+        WebElement provisionalType = waitPresenceOfElementLocated(driver, provisionalTypeLocator);
         executor.executeScript("arguments[0].click()", provisionalType);
-        logger.info(String.format("Setting of provisioning model was successful: %s",calculator.getProvisionalType()));
+        logger.info(String.format("Setting of provisioning model was successful: %s", calculator.getProvisionalType()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectSeriesValue() {
-        WebElement seriesDropDown = waitPresenceOfElementLocated(driver,SERIES_DROPDOWN_LOCATOR);
+        WebElement seriesDropDown = waitPresenceOfElementLocated(driver, SERIES_DROPDOWN_LOCATOR);
         executor.executeScript("arguments[0].click()", seriesDropDown);
         By seriesValueLocator = By.xpath(format(xpathGenerator.getXpathForMachineClass()));
-        WebElement seriesValue = waitPresenceOfElementLocated(driver,seriesValueLocator);
+        WebElement seriesValue = waitPresenceOfElementLocated(driver, seriesValueLocator);
         executor.executeScript("arguments[0].click()", seriesValue);
-        logger.info(String.format("Setting of series was successful: %s",calculator.getMachineClass()));
+        logger.info(String.format("Setting of series was successful: %s", calculator.getMachineClass()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectMachineTypeValue() {
-        WebElement machineTypeDropdown = waitPresenceOfElementLocated(driver,MACHINE_TYPE_DROPDOWN_LOCATOR);
+        WebElement machineTypeDropdown = waitPresenceOfElementLocated(driver, MACHINE_TYPE_DROPDOWN_LOCATOR);
         executor.executeScript("arguments[0].click()", machineTypeDropdown);
         By machineTypeValueLocator = By.xpath(format(xpathGenerator.getXpathForMachineType()));
-        WebElement machineTypeValue = waitPresenceOfElementLocated(driver,machineTypeValueLocator);
+        WebElement machineTypeValue = waitPresenceOfElementLocated(driver, machineTypeValueLocator);
         executor.executeScript("arguments[0].click()", machineTypeValue);
-        logger.info(String.format("Setting of machine type was successful: %s",calculator.getMachineType()));
+        logger.info(String.format("Setting of machine type was successful: %s", calculator.getMachineType()));
         return this;
     }
 
     public CloudPricingCalculatorPage addGPUs() {
-        WebElement addGPUsButton = waitPresenceOfElementLocated(driver,ADD_GPUS_BUTTON);
+        WebElement addGPUsButton = waitPresenceOfElementLocated(driver, ADD_GPUS_BUTTON);
         executor.executeScript("arguments[0].click()", addGPUsButton);
-        WebElement GPUTypeDropdown = waitElementToBeClickable(driver,GPU_TYPE_DROPDOWN);
+        WebElement GPUTypeDropdown = waitElementToBeClickable(driver, GPU_TYPE_DROPDOWN);
         executor.executeScript("arguments[0].click()", GPUTypeDropdown);
         By GPUTypeValueLocator = By.xpath(xpathGenerator.getXpathForGpuType());
-        WebElement GPUTypeValue = waitElementToBeClickable(driver,GPUTypeValueLocator);
+        WebElement GPUTypeValue = waitElementToBeClickable(driver, GPUTypeValueLocator);
         executor.executeScript("arguments[0].click()", GPUTypeValue);
-        logger.info(String.format("Setting of GPU type was successful: %s",calculator.getGpuType()));
-        WebElement numberOfGPUsDropdown = waitElementToBeClickable(driver,NUMBER_OF_GPUS_DROPDOWN);
+        logger.info(String.format("Setting of GPU type was successful: %s", calculator.getGpuType()));
+        WebElement numberOfGPUsDropdown = waitElementToBeClickable(driver, NUMBER_OF_GPUS_DROPDOWN);
         executor.executeScript("arguments[0].click()", numberOfGPUsDropdown);
         By numberOfGPUValueLocator = By.xpath(xpathGenerator.getXpathForNumberOfGpus());
-        WebElement numberOfGPUValue = waitPresenceOfElementLocated(driver,numberOfGPUValueLocator);
+        WebElement numberOfGPUValue = waitPresenceOfElementLocated(driver, numberOfGPUValueLocator);
         executor.executeScript("arguments[0].click()", numberOfGPUValue);
-        logger.info(String.format("Setting number of GPUs was successful: %s",calculator.getNumberOfGPUs()));
+        logger.info(String.format("Setting number of GPUs was successful: %s", calculator.getNumberOfGPUs()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectSSDValue() {
-        WebElement localSSDDropdown = waitElementToBeClickable(driver,LOCAL_SSD_DROPDOWN);
+        WebElement localSSDDropdown = waitElementToBeClickable(driver, LOCAL_SSD_DROPDOWN);
         executor.executeScript("arguments[0].click()", localSSDDropdown);
         By localSSDValueLocator = By.xpath(xpathGenerator.getXpathForLocalSSD());
-        WebElement localSSDValue = waitPresenceOfElementLocated(driver,localSSDValueLocator);
+        WebElement localSSDValue = waitPresenceOfElementLocated(driver, localSSDValueLocator);
         executor.executeScript("arguments[0].click()", localSSDValue);
-        logger.info(String.format("Setting number and value of local SSDs was successful: %s",calculator.getLocalSSD()));
+        logger.info(String.format("Setting number and value of local SSDs was successful: %s", calculator.getLocalSSD()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectDatacenterLocation() {
-        WebElement datacenterDropDown = waitPresenceOfElementLocated(driver,DATACENTER_LOCATION_DROPDOWN);
+        WebElement datacenterDropDown = waitPresenceOfElementLocated(driver, DATACENTER_LOCATION_DROPDOWN);
         executor.executeScript("arguments[0].click()", datacenterDropDown);
         By datacenterLocationValueLocator = By.xpath(xpathGenerator.getXpathForDatacenterLocation());
-        WebElement datacenterLocationValue = waitPresenceOfElementLocated(driver,datacenterLocationValueLocator);
+        WebElement datacenterLocationValue = waitPresenceOfElementLocated(driver, datacenterLocationValueLocator);
         executor.executeScript("arguments[0].click()", datacenterLocationValue);
-        logger.info(String.format("Setting location of datacenter was successful: %s",calculator.getDatacenterLocation()));
+        logger.info(String.format("Setting location of datacenter was successful: %s", calculator.getDatacenterLocation()));
         return this;
     }
 
     public CloudPricingCalculatorPage selectCommittedUsage() {
-        WebElement committedUsageDropdown = waitPresenceOfElementLocated(driver,COMMITTED_USAGE_DROPDOWN);
+        WebElement committedUsageDropdown = waitPresenceOfElementLocated(driver, COMMITTED_USAGE_DROPDOWN);
         executor.executeScript("arguments[0].click()", committedUsageDropdown);
         By committedUsageValueLocator = By.xpath(xpathGenerator.getXpathForCommittedUsage());
-        WebElement committedUsageValue = waitPresenceOfElementLocated(driver,committedUsageValueLocator);
+        WebElement committedUsageValue = waitPresenceOfElementLocated(driver, committedUsageValueLocator);
         executor.executeScript("arguments[0].click()", committedUsageValue);
-        logger.info(String.format("Setting committed usage term was successful: %s",calculator.getCommittedUsageTerm()));
+        logger.info(String.format("Setting committed usage term was successful: %s", calculator.getCommittedUsageTerm()));
         return this;
     }
 
     public CloudPricingCalculatorPage pressAddToEstimateButton() {
-        WebElement addToEstimateButton = waitPresenceOfElementLocated(driver,ADD_TO_ESTIMATE_BUTTON);
+        WebElement addToEstimateButton = waitPresenceOfElementLocated(driver, ADD_TO_ESTIMATE_BUTTON);
         executor.executeScript("arguments[0].click()", addToEstimateButton);
         logger.info("Estimate button pressed successful");
         return this;
     }
 
     public String getCostFromCloudPricingPage() {
-        String cost = waitPresenceOfElementLocated(driver,TOTAL_COST_AREA).getText();
-        String format = cost.replace("Total Estimated Cost: ","");
-        String formattedCostFromCloudPricingPage = format.replace(" per 1 month","");
+        String cost = waitPresenceOfElementLocated(driver, TOTAL_COST_AREA).getText();
+        String format = cost.replace("Total Estimated Cost: ", "");
+        String formattedCostFromCloudPricingPage = format.replace(" per 1 month", "");
         logger.info(String.format("Cost from cloud pricing page successful extracted: %s", formattedCostFromCloudPricingPage));
         return formattedCostFromCloudPricingPage;
     }
 
     public CloudPricingCalculatorPage pressEmailEstimateButton() {
-        WebElement pressEmailButton = waitPresenceOfElementLocated(driver,EMAIL_BUTTON);
+        WebElement pressEmailButton = waitPresenceOfElementLocated(driver, EMAIL_BUTTON);
         executor.executeScript("arguments[0].click()", pressEmailButton);
         logger.info("Send email button pressed successful");
         return this;
@@ -171,7 +176,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
     public CloudPricingCalculatorPage pasteEmail(String email) {
         driver.switchTo().frame(0);
         driver.switchTo().frame("myFrame");
-        WebElement enterEmail = waitPresenceOfElementLocated(driver,EMAIL_AREA);
+        WebElement enterEmail = waitPresenceOfElementLocated(driver, EMAIL_AREA);
         executor.executeScript("arguments[0].click()", enterEmail);
         enterEmail.sendKeys(email);
         logger.info(String.format("Email adress copied successful: %s", email));
@@ -179,7 +184,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
     }
 
     public CloudPricingCalculatorPage sendEmail() {
-        WebElement pressSendEmailButton = waitPresenceOfElementLocated(driver,SEND_EMAIL_BUTTON);
+        WebElement pressSendEmailButton = waitPresenceOfElementLocated(driver, SEND_EMAIL_BUTTON);
         executor.executeScript("arguments[0].click()", pressSendEmailButton);
         logger.info("Send email button pressed successful");
         return this;
@@ -205,18 +210,22 @@ public class CloudPricingCalculatorPage extends AbstractPage {
     }
 
     public String getInstanceType() {
-        return waitPresenceOfElementLocated(driver,INSTANCE_TYPE_AREA).getText();
+        return waitPresenceOfElementLocated(driver, INSTANCE_TYPE_AREA).getText();
     }
 
     public String getRegion() {
-        return waitPresenceOfElementLocated(driver,REGION_AREA).getText();
+        return waitPresenceOfElementLocated(driver, REGION_AREA).getText();
     }
 
     public String getLocalSSDValue() {
-        return waitPresenceOfElementLocated(driver,SSD_AREA).getText();
+        return waitPresenceOfElementLocated(driver, SSD_AREA).getText();
     }
 
     public String getTermAreaValue() {
-        return waitPresenceOfElementLocated(driver,TERM_AREA).getText();
+        return waitPresenceOfElementLocated(driver, TERM_AREA).getText();
+    }
+
+    public String getTotalCost() {
+        return waitPresenceOfElementLocated(driver, TOTAL_COST_AREA).getText();
     }
 }
