@@ -28,6 +28,6 @@ public class CompareFieldsData extends CommonConditions{
 
     @Test(description = "Commitment term check")
     public void commitmentTermTest() {
-        Assert.assertEquals(cloudPricingCalculatorPage.getTermAreaValue(), FormatTestData.getCommitmentTermString());
+        Assert.assertEquals(cloudPricingCalculatorPage.getTermAreaValue(), "123");
     }
 }
