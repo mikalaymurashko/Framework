@@ -104,7 +104,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
         WebElement GPUTypeDropdown = waitElementToBeClickable(driver,GPU_TYPE_DROPDOWN);
         executor.executeScript("arguments[0].click()", GPUTypeDropdown);
         By GPUTypeValueLocator = By.xpath(xpathGenerator.getXpathForGpuType());
-        WebElement GPUTypeValue = waitPresenceOfElementLocated(driver,GPUTypeValueLocator);
+        WebElement GPUTypeValue = waitElementToBeClickable(driver,GPUTypeValueLocator);
         executor.executeScript("arguments[0].click()", GPUTypeValue);
         logger.info(String.format("Setting of GPU type was successful: %s",calculator.getGpuType()));
         WebElement numberOfGPUsDropdown = waitElementToBeClickable(driver,NUMBER_OF_GPUS_DROPDOWN);
@@ -130,7 +130,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
         WebElement datacenterDropDown = waitPresenceOfElementLocated(driver,DATACENTER_LOCATION_DROPDOWN);
         executor.executeScript("arguments[0].click()", datacenterDropDown);
         By datacenterLocationValueLocator = By.xpath(xpathGenerator.getXpathForDatacenterLocation());
-        WebElement datacenterLocationValue = waitPresenceOfElementLocated(driver,datacenterLocationValueLocator);
+        WebElement datacenterLocationValue = waitElementToBeClickable(driver,datacenterLocationValueLocator);
         executor.executeScript("arguments[0].click()", datacenterLocationValue);
         logger.info(String.format("Setting location of datacenter was successful: %s",calculator.getDatacenterLocation()));
         return this;
