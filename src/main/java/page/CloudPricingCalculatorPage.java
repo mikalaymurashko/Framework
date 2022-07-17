@@ -140,7 +140,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
         WebElement committedUsageDropdown = waitElementToBeClickable(driver,COMMITTED_USAGE_DROPDOWN);
         executor.executeScript("arguments[0].click()", committedUsageDropdown);
         By committedUsageValueLocator = By.xpath(xpathGenerator.getXpathForCommittedUsage());
-        WebElement committedUsageValue = waitElementToBeClickable(driver,committedUsageValueLocator);
+        WebElement committedUsageValue = waitPresenceOfElementLocated(driver,committedUsageValueLocator);
         executor.executeScript("arguments[0].click()", committedUsageValue);
         logger.info(String.format("Setting committed usage term was successful: %s",calculator.getCommittedUsageTerm()));
         return this;
