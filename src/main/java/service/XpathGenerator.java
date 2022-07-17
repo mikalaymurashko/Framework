@@ -41,7 +41,7 @@ public class XpathGenerator {
     }
 
     public String getXpathForCommittedUsage() {
-        return String.format("//div[@class='md-select-menu-container md-active md-clickable']/descendant ::div[contains(text(),'%s')]/parent::md-option",
+        return String.format("//div[@class='md-select-menu-container md-active md-clickable']/descendant::div[contains(text(),'%s')]/parent::md-option",
                 calculator.getCommittedUsageTerm());
     }
 }
