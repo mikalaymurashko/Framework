@@ -130,7 +130,7 @@ public class CloudPricingCalculatorPage extends AbstractPage {
         WebElement datacenterDropDown = waitPresenceOfElementLocated(driver,DATACENTER_LOCATION_DROPDOWN);
         executor.executeScript("arguments[0].click()", datacenterDropDown);
         By datacenterLocationValueLocator = By.xpath(xpathGenerator.getXpathForDatacenterLocation());
-        WebElement datacenterLocationValue = waitElementToBeClickable(driver,datacenterLocationValueLocator);
+        WebElement datacenterLocationValue = waitPresenceOfElementLocated(driver,datacenterLocationValueLocator);
         executor.executeScript("arguments[0].click()", datacenterLocationValue);
         logger.info(String.format("Setting location of datacenter was successful: %s",calculator.getDatacenterLocation()));
         return this;
