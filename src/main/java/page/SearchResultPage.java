@@ -1,6 +1,8 @@
 package page;
 
 import org.openqa.selenium.By;
+import org.openqa.selenium.NoSuchElementException;
+import org.openqa.selenium.TimeoutException;
 import org.openqa.selenium.WebDriver;
 import static util.MethodWait.*;
 
@@ -14,7 +16,11 @@ public class SearchResultPage extends AbstractPage {
     }
 
     public CloudPricingCalculatorPage proceedToCalculatorPage(){
-        waitPresenceOfElementLocated(driver,calculatorLinkLocator).click();
+        try {
+            waitPresenceOfElementLocated(driver,calculatorLinkLocator).click();
+        } catch (NoSuchElementException| TimeoutException e){
+            driver.get("https://cloud.google.com/products/calculator");
+        }
         logger.info("Cloud pricing calculator page was opened successful");
         return new CloudPricingCalculatorPage(driver);
     }
